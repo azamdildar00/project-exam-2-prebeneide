@@ -1,0 +1,54 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+    font-family: $font-primary;
+    background: $colour-background;
+    margin: 0;
+}
+
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+  
+li {
+    background: $colour-ui-primary;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 7px $colour-ui-shadow;
+    transition: all 0.4s;
+}
+  
+li:hover {
+    box-shadow: none;
+}
+
+#root {
+  display:flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.wrapper {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+  background: $colour-primary;
+  color: white;
+  font-size: 13px;
+  text-transform: uppercase;
+  display:flex;
+  justify-content: center;
+  padding: 0.5em;
+}

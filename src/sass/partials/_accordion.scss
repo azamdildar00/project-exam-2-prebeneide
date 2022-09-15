@@ -1,0 +1,21 @@
+.accordion {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-item {
+    background-color: white;
+}
+
+.accordion-button {
+    background-color: white;
+    color: $colour-primary;
+}
+
+.accordion-button:not(.collapsed) {
+    color: $colour-primary;
+    background-color: white;
+}
+
+

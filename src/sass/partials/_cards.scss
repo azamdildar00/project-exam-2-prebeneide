@@ -1,0 +1,43 @@
+.card-img-top {
+    border-radius: 7px;
+}
+
+.card-img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-text-name {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.card-text-rating {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.card-text-people {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.card-text-price {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.card-text-area {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.card {
+    margin-bottom: 45px;
+    border: none;
+
+    p {
+        margin-bottom:7px;
+    }
+}
+

@@ -1,0 +1,43 @@
+.inputs {
+    border-color: $colour-primary;
+    &.small {
+        border-radius: 20px;
+    }
+}
+
+.form-control {
+    font-size: $inter-font-size-16;
+    font-weight: $font-weight-medium;
+    
+}
+
+.btn {
+    background-color: $colour-primary;
+    color: $colour-white;
+    border-radius: 27px;
+    width: 100%;
+    height: 45px;
+    font-weight: 600;
+    font-size: 20px;
+
+    &:hover {
+        border: 2px solid $colour-primary;
+        color: $colour-primary !important;
+        background-color: $colour-white !important;
+        box-shadow: $box-shadow;
+    }
+
+    &:active {
+        border: 2px solid $colour-primary;
+        color: $colour-primary !important;
+        background-color: $colour-white !important;
+        box-shadow: $box-shadow;
+    }
+
+    &:disabled {
+        border: 2px solid $colour-primary;
+        color: $colour-primary !important;
+        background-color: $colour-white !important;
+        box-shadow: $box-shadow;
+    }
+}

@@ -1,9 +1,8 @@
-h1 {
-    color: $colour-primary;
-    padding: 0.5rem;
-    background: rgba(255, 255, 255, 0.1);
-}
+$font-family-base: "Inter", sans-serif;
+$headings-font-family: "Inter", sans-serif;
+$headings-color: $colour-primary;
 
-h3 {
-    margin-top: 3rem;
+h1 {
+    text-align: center;
+    padding-top: 40px;
 }

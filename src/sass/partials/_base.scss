@@ -1,8 +1,52 @@
-// colours
+// custom
 
-$colour-primary: #2dbead;
-$colour-background: #e8e8e8;
-$colour-ui-primary: white;
-$colour-ui-shadow: rgba(0, 0, 0, 0.1);
+$colour-primary: #6EDDBC;
+$colour-white: #FFFFFF;
+$colour-primary-black: #222222;
+$colour-light-black: #464646;
+$colour-dark-grey: #858585;
+$colour-lighter-grey: #8A8A8A;
+$colour-invisible-grey: #E2E2E2;
+$colour-red: #FC7E88;
+$colour-disabled-grey: #a5e9d470;
 
-$font-primary: "Open Sans", sans-serif;
+// Bootstrap
+
+$theme-colors: (
+  "primary":    $colour-primary,
+  "dark":       $colour-primary,
+  "secondary":  $colour-white,
+);
+
+// Box-shadow
+
+$box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+// Font
+
+$font-family-base: "Inter", sans-serif;
+$headings-font-family: "Inter", sans-serif;
+$headings-color: $colour-primary;
+
+$font-weight-thin: 100;
+$font-weight-extralight: 200;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+$font-weight-black: 900;
+
+// Inter font sizes from Adobe XD
+
+$inter-font-size-14: 14px;
+$inter-font-size-16: 14px;
+$inter-font-size-20: 16px;
+
+// cards
+
+$card-spacer-x: 0.3em;
+$card-spacer-y: 0.3em;
+
+

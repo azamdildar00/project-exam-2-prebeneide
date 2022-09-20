@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { API, POPULATE } from "../../constants/api";
+import { BASE_URL, PLACES_API, POPULATE } from "../../constants/api";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { LinkContainer } from "react-router-bootstrap";
@@ -19,7 +19,7 @@ function PlaceDetail() {
         navigate.push("/");
     }
 
-    const url = API + "/" + id + POPULATE;
+    const url = BASE_URL + PLACES_API + "/" + id + POPULATE;
 
     useEffect(
         function () {
@@ -63,7 +63,7 @@ function PlaceDetail() {
                 </div>
             </Col>
             <Col>
-                <LinkContainer to={`enquiry-detail/${place.id}`}>
+                <LinkContainer to={`/sendEnquiry/${place.id}`}>
                     <Button variant="success">Book</Button>
                 </LinkContainer>
             </Col>

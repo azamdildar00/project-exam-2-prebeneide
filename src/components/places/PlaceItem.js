@@ -9,24 +9,24 @@ function PlaceItem({ id, image, name, rating, people, price, area}) {
       <Col>
         <LinkContainer to={`detail/${id}`}>
           <Card style={{ width: "14rem" }}>
-            <Card.Img variant="top" src={image} className="card-img"/>
+            <Card.Img variant="top" src={image} className="card__img"/>
             <Card.Body>
               <div>
                 <Row>
                     <Col>
-                        <p className="card-text-name">{name}</p>
+                        <p className="card__text--name">{name}</p>
                     </Col>
                     <Col>
-                        <p className="card-text-rating d-flex justify-content-end">{rating}</p>
+                        <p className="card__text--rating d-flex justify-content-end">{rating}</p>
                     </Col>
                 </Row>
-                <p className="card-text-people">{people}</p>
+                <p className="card__text--people">{people}</p>
                 <Row>
                     <Col>
-                        <p className="card-text-price">{price} kr night</p>
+                        <p className="card__text--price">{price} kr night</p>
                     </Col>
                     <Col>
-                        <p className="card-text-area d-flex justify-content-end">{area}</p>
+                        <p className="card__text--area d-flex justify-content-end">{area}</p>
                     </Col>
                 </Row>
               </div>

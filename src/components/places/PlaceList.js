@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Spinner from "react-bootstrap/Spinner";
 import Alert from "react-bootstrap/Alert";
-import { API, POPULATE } from "../../constants/api";
+import { BASE_URL, PLACES_API, POPULATE } from "../../constants/api";
 import PlaceItem from "./PlaceItem";
 
 function PlaceList() {
@@ -14,7 +14,7 @@ function PlaceList() {
     useEffect(function () {
         async function fetchData() {
             try {
-                const response = await fetch(API + POPULATE);
+                const response = await fetch(BASE_URL + PLACES_API + POPULATE);
 
                 if (response.ok) {
                     const json = await response.json();

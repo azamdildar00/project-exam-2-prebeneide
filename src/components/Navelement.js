@@ -1,4 +1,7 @@
 import React from 'react'
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from '../context/AuthContext';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -7,7 +10,16 @@ import Navbar from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';
 
 
-function Layout() {
+function Navelement() {
+  const [auth, setAuth] = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  function logout() {
+      setAuth(null);
+      navigate.push("/home");
+  }
+
   return (
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
@@ -37,6 +49,12 @@ function Layout() {
               <LinkContainer to="/about">
                 <Nav.Link>About</Nav.Link>
               </LinkContainer>
+              {auth? (
+                      <>
+                          | <LinkContainer to="/admin/place/add"><Nav.Link>Add place</Nav.Link></LinkContainer> | <button onClick={logout}>Log out</button>
+                      </>
+              ) : (   <LinkContainer to="/login"><Nav.Link>Login</Nav.Link></LinkContainer>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -44,4 +62,4 @@ function Layout() {
   );
 }
 
-export default Layout
+export default Navelement

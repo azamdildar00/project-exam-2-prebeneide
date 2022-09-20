@@ -1,0 +1,14 @@
+.form__errormessage {
+    color: $colour-red;
+    font-weight: $font-weight-medium;
+    font-size: $inter-font-size-16;
+    margin-bottom: 10px;
+}
+
+.form__errormessage--div {
+    height: 15px;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}

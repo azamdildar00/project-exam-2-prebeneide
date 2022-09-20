@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { API, POPULATE } from "../../constants/api";
+import { BASE_URL, PLACES_API, POPULATE } from "../constants/api";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { Button } from "react-bootstrap";
 
-function EnquiryDetail() {
+function Enquiry() {
     const [place, setPlace] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -18,7 +18,8 @@ function EnquiryDetail() {
         navigate.push("/");
     }
 
-    const url = API + "/" + id + POPULATE;
+
+    const url = BASE_URL + PLACES_API + "/" + id + POPULATE;
 
     useEffect(
         function () {
@@ -62,11 +63,11 @@ function EnquiryDetail() {
                 </div>
             </Col>
             <Col>
-                    <Button variant="success">Book</Button>
+                    <Button variant="success">Send Enquiry</Button>
             </Col>
         </Row>
     </>
     );
 }
 
-export default EnquiryDetail;
+export default Enquiry;

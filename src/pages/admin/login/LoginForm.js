@@ -1,12 +1,12 @@
 import React from 'react'
 import FormErrorMessage from "../../../components/common/FormErrorMessage";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
-import AuthContext from "../../../context/AuthContext";
+import { useAuth } from "../../../context/AuthContext";
 import { BASE_URL, TOKEN_PATH } from '../../../constants/api';
 import Heading from "../../../components/layout/Heading";
 import { Form, Button, Container } from "react-bootstrap";
@@ -32,7 +32,7 @@ function LoginForm() {
         resolver: yupResolver(schema),
     });
 
-    const [auth, setAuth] = useContext(AuthContext);
+    const [auth, setAuth] = useAuth();
 
     async function onSubmitHandler(data) {
         setSubmitting(true);
@@ -72,10 +72,10 @@ function LoginForm() {
                 <Form.Group className="mb-4" controlId="formBasicUsername">
                   <Form.Label>Username</Form.Label>
                   <Form.Control
-                    className="inputs small"
+                    className="inputs input__borderradius--small"
                     type="username"
                     placeholder="Username"
-                    {...register("username", { required: true })}
+                    {...register("username")}
                   />
                   <div className="form__errormessage--div">
                     {errors.username && (
@@ -89,10 +89,10 @@ function LoginForm() {
                 <Form.Group className="mb-4" controlId="formBasicPassword">
                   <Form.Label>Password</Form.Label>
                   <Form.Control
-                    className="inputs small"
+                    className="inputs input__borderradius--small"
                     type="password"
                     placeholder="Password"
-                    {...register("password", { required: true })}
+                    {...register("password")}
                   />
                   <div className="form__errormessage--div">
                     {errors.password && (

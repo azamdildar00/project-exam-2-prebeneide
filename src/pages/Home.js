@@ -1,7 +1,8 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Heading from "../components/layout/Heading";
-import PlaceList from "../components/places/PlaceList";
+import Navelement from "../components/Navelement";
+import PlaceList from "./places/PlaceList";
 
 function Home() {
   return (

@@ -1,14 +1,36 @@
 .inputs {
     border-color: $colour-primary;
-    &.small {
+    border-style:solid;
+    font-size: $inter-font-size-20;
+    font-weight: $font-weight-medium;
+    padding: 10px;
+    height: 35px;
+    width: 100%;
+
+    &.input__borderradius--small {
         border-radius: 20px;
     }
+}
+
+.input__small--width {
+    width: 15%;
+    text-align: center;
 }
 
 .form-control {
     font-size: $inter-font-size-16;
     font-weight: $font-weight-medium;
     
+}
+
+.textarea {
+    border-color: $colour-primary;
+    border-style:solid;
+    font-size: $inter-font-size-20;
+    font-weight: $font-weight-medium;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
 }
 
 .btn {

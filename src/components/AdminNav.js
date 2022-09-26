@@ -44,6 +44,9 @@ function AdminNav() {
             <LinkContainer to="/admin/place/add">
               <Nav.Link>Add place</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/admin/enquiries">
+              <Nav.Link>Enquiries</Nav.Link>
+            </LinkContainer>
             <button onClick={logout}>Log out</button>
           </Nav>
         </Navbar.Collapse>

@@ -1,0 +1,31 @@
+
+
+.enquiries-inbox__table {
+    border-collapse: seperate;
+    border-color: $colour-primary;
+    border-spacing: 0;
+    
+    &--productdetails-div {
+        display: flex;
+        flex-direction:row;
+        justify-content: space-evenly;
+    }
+
+    &--product-info {
+        padding: 15px 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    &--product-image {
+        width: 12vh;
+        padding: 5px;
+
+        > img {
+            width: 100%;
+        }
+    }
+
+}

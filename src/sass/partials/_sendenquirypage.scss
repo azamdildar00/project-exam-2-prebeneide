@@ -1,0 +1,57 @@
+
+
+.send-enquiry__selectedproductinfo {
+    &--box {
+        border: 2px solid $colour-primary;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+    }
+
+    &--image {
+        width: 100%;
+        height: 100%;
+    
+        & > img {
+            width: 100%;
+        }
+    }
+
+    &--textdiv {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &--row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.send-enquiry__table {
+    &--div {
+        border: 2px solid $colour-primary;
+        border-radius: 10px;
+        padding: 10px;
+    }
+}
+
+.send-enquiry__input {
+    border: 2px solid $colour-primary;
+    border-radius: 20px;
+    height: 35px;
+    width: 100%;
+}
+
+.send-enqury__guestsdropdown {
+    border: 2px solid $colour-primary;
+    height: 35px;
+    color: $colour-dark-grey;
+    background-color: $colour-white;
+    font-family: $font-family-base;
+    font-size: $inter-font-size-14;
+    text-aling: center;
+}

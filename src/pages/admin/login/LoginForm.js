@@ -104,8 +104,7 @@ function LoginForm() {
                 </Form.Group>
                 <Button
                   variant="primary"
-                  type="submit"
-                >
+                  type="submit">
                   {submitting ? "Logging in..." : "Login"}
                 </Button>
               </fieldset>

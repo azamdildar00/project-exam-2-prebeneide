@@ -6,6 +6,9 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import { LinkContainer } from "react-router-bootstrap";
 import { Button } from "react-bootstrap";
+import IconComponent from "../../components/IconComponent";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid, regular, light, thin, duotone, icon } from '@fortawesome/fontawesome-svg-core/import.macro' 
 
 function PlaceDetail() {
     const [place, setPlace] = useState(null);
@@ -86,7 +89,7 @@ function PlaceDetail() {
 
             <Row>
                 <Col xs={12} sm={6} md={6} className="d-flex justify-content-between">
-                    <span>{place.attributes.howmanypeople} people</span>
+                    <span>{place.attributes.howmanypeople} people</span><FontAwesomeIcon icon={solid('truck')} />
                     <span>{place.attributes.howmanybedrooms} bedrooms</span>
                     <span>{place.attributes.howmanybeds} beds</span>
                     <span>{place.attributes.howmanybathrooms} bathrooms</span>
@@ -111,6 +114,14 @@ function PlaceDetail() {
                     <p>{place.attributes.otherthingsworthnotingtext}</p>
 
                     <h4>This place offers</h4>
+
+                    <Row>{
+                        Object.keys(place.attributes).filter(i => place.attributes[i] === true).map((icons) => {
+                            return <Col>
+                                        <IconComponent type={icons} />
+                                    </Col>
+                        })}
+                    </Row>
                 </Col>
                 <Col xs={12} sm={6} md={6} className="text-center mt-2">
                     <LinkContainer to={`/sendEnquiry/${place.id}`}>

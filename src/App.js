@@ -18,6 +18,9 @@ import Authentication from "./context/AuthContext";
 import PlaceAddSuccess from "./pages/admin/PlaceAddSuccess";
 import Enquiries from "./pages/admin/Enquiries";
 import EnquiryDetail from "./pages/admin/EnquiryDetail";
+import ContactUsSuccess from "./pages/ContactUsSuccess";
+import Inbox from "./pages/admin/Inbox";
+import InboxDetail from "./pages/admin/InboxDetail";
 
 
 function App() {
@@ -29,6 +32,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/success" element={<ContactUsSuccess />} />
               <Route path="/detail/:id" element={<PlaceDetail />} />
               <Route path="/sendEnquiry/:id" element={<Enquiry />} />
               <Route path="/login" element={<LoginPage />} />
@@ -37,6 +41,8 @@ function App() {
               <Route path="/admin/place/added" element={<PlaceAddSuccess />} /> 
               <Route path="/admin/enquiries" element={<Enquiries />} />
               <Route path="/admin/enquiries/details/:id" element={<EnquiryDetail />} />
+              <Route path="/admin/inbox" element={<Inbox />} />
+              <Route path="/admin/inboxDetail/:id" element ={<InboxDetail />} />
             </Routes>
           </Container>
         </Router>

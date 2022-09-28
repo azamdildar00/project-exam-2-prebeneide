@@ -47,6 +47,9 @@ function AdminNav() {
             <LinkContainer to="/admin/enquiries">
               <Nav.Link>Enquiries</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/admin/inbox">
+              <Nav.Link>Inbox</Nav.Link>
+            </LinkContainer>
             <button onClick={logout}>Log out</button>
           </Nav>
         </Navbar.Collapse>

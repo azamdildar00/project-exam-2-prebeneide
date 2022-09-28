@@ -1,0 +1,37 @@
+.messages-inbox__table {
+    &--thead {
+        background-color: $colour-primary;
+        color: $colour-white;
+        text-align: center;
+    }
+    &--table {
+        border-color: $colour-primary;
+    }
+
+    td {
+        text-align: center;
+    }
+    tr {
+        border-right: 1px solid $colour-primary;
+        border-bottom: 1px solid $colour-primary;
+        border-left: 1px solid $colour-primary;
+    }
+}
+
+.messages-inbox__table > tbody > tr:hover td {
+    background-color: $colour-primary;
+    color: $colour-white;
+    cursor: pointer;
+}
+
+.messages-inbox__table tr th,
+.messages-inbox__table tr td {
+    padding: 10px;
+}
+
+
+
+
+
+
+

@@ -1,11 +1,17 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { Container, Row, Table } from 'react-bootstrap';
 import { BASE_URL } from '../../constants/api';
 
 const url = BASE_URL + "/api/enquiries";
 
 function Enquiries() {
+    const navigate = useNavigate();
+    const redirect = function (id) {
+        navigate(`/admin/enquiries/details/${id}`)
+    }
+
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -46,8 +52,8 @@ function Enquiries() {
         <Row>
             <h5 className="mb-5">Enquiries</h5>
         </Row>
-        <Table hover className="enquiries-inbox__table">
-            <thead>
+        <Table hover  className="enquiries-inbox__table">
+            <thead className="enquiries-inbox__table--thead">
                 <tr>
                     <th>Hotel/BnB/Guesthouse</th>
                     <th>Check In</th>
@@ -56,18 +62,23 @@ function Enquiries() {
                     <th>Guests</th>
                     <th>Total Price</th>
                     <th>Enquiry Date</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody className="enquiries-inbox__table--tbody">
                 {data.map(function (enquiries) {
                     return (
-                    <tr>
+                    <tr onClick={() => redirect(enquiries.id)} key={enquiries.id} >
                         <td className="enquiries-inbox__table--productdetails-div">
                             <div className="enquiries-inbox__table--product-image">
                                 <img src={enquiries.attributes.establishmentCoverImage} alt={"Hotelimage"} />
                             </div>
                             <div className="enquiries-inbox__table--product-info">
                                 <span>{enquiries.attributes.establishmentName}</span>
+                                <span>{enquiries.attributes.establishmentArea} </span>
+                                <span>{enquiries.attributes.establishmentRatingDecimal} rating in stars</span>
+                                <span>{enquiries.attributes.establishmentPeople} </span>
                                 <span>{enquiries.attributes.establishmentPriceNumber} kr night</span>
                             </div>
                         </td>
@@ -78,6 +89,9 @@ function Enquiries() {
 
                         <td>{enquiries.attributes.priceNumber} kr</td>
                         <td>{getFormattedDate(enquiries.attributes.createdAt)}</td>
+
+                        <td>{enquiries.attributes.firstName}</td>
+                        <td>{enquiries.attributes.lastName}</td>
                     </tr>
                     )
                 })}

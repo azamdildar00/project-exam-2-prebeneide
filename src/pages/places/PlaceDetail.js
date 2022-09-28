@@ -17,7 +17,7 @@ function PlaceDetail() {
     const { id } = useParams();
 
     if (!id) {
-        navigate.push("/");
+        navigate("/");
     }
 
     const url = BASE_URL + PLACES_API + "/" + id + POPULATE;

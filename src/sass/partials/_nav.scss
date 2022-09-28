@@ -1,0 +1,32 @@
+.navbar__search--container {
+    width: 100%;
+    input {
+        border-radius: 15px;
+        border-style: none;
+        height: 30px;
+        min-width: 400px;
+    }
+}
+
+.navbar__search--dropdown-menu {
+    display:block;
+    top: 100%;
+    position: absolute;
+    background-color: $colour-white;
+    color: $colour-primary;
+    height: auto;
+    min-width: 400px;
+    z-index: 5000;
+}
+
+.navbar__search--dropdown-item {
+    cursor: pointer;
+    border-right: 1px solid $colour-primary;
+    border-left: 1px solid $colour-primary;
+    border-bottom: 1px solid $colour-primary;
+
+    &:hover {
+        background-color: $colour-primary;
+        color: $colour-white;
+    }
+}

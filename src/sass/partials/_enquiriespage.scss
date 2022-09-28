@@ -1,10 +1,31 @@
 
 
 .enquiries-inbox__table {
-    border-collapse: seperate;
     border-color: $colour-primary;
     border-spacing: 0;
-    
+
+    &--thead {
+        background-color: $colour-primary;
+        color: $colour-white;
+        text-align: center;
+    }
+
+    &--tbody tr:hover td {
+        background-color: $colour-primary;
+        color: $colour-white;
+        cursor: pointer;
+    }
+
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    tr {
+        border-right: 1px solid $colour-primary;
+        border-left: 1px solid $colour-primary;
+    }
+
     &--productdetails-div {
         display: flex;
         flex-direction:row;
@@ -12,20 +33,19 @@
     }
 
     &--product-info {
-        padding: 15px 5px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
+        align-items: center;
     }
 
     &--product-image {
-        width: 12vh;
-        padding: 5px;
+        max-width: 12vh;
+        padding: 10px;
 
         > img {
             width: 100%;
         }
     }
-
 }

@@ -17,6 +17,7 @@ import Container from "react-bootstrap/Container";
 import Authentication from "./context/AuthContext";
 import PlaceAddSuccess from "./pages/admin/PlaceAddSuccess";
 import Enquiries from "./pages/admin/Enquiries";
+import EnquiryDetail from "./pages/admin/EnquiryDetail";
 
 
 function App() {
@@ -34,7 +35,8 @@ function App() {
               <Route path="/admin/welcome" element={<Welcome />} />
               <Route path="/admin/place/add" element={<AddPlace />} />
               <Route path="/admin/place/added" element={<PlaceAddSuccess />} /> 
-              <Route path="/admin/enquiries" element={<Enquiries />} /> 
+              <Route path="/admin/enquiries" element={<Enquiries />} />
+              <Route path="/admin/enquiries/details/:id" element={<EnquiryDetail />} />
             </Routes>
           </Container>
         </Router>

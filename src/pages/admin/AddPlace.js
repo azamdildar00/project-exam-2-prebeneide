@@ -9,6 +9,11 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
+import IconComponentPlaceOffers from "../../components/iconcomponents/IconComponentPlaceOffers";
+import IconComponentHealthSafety from "../../components/iconcomponents/IconComponentHealthSafety";
+import IconComponentRules from "../../components/iconcomponents/IconComponentRules";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPerson,faDoorOpen, faBed, faToilet, faStar } from '@fortawesome/pro-solid-svg-icons';
 
 
 
@@ -61,6 +66,10 @@ function Addplace() {
             niceview: data.niceview == "on" ? true : false,
             freeparking: data.freeparking == "on" ? true : false,
             kitchen: data.kitchen == "on" ? true : false,
+            nosmoking: data.nosmoking == "on" ? true : false,
+            nopartiesorevents: data.nopartiesorevents == "on" ? true : false,
+            checkintimeaftertext: data.checkintimeaftertext,
+            checkouttimetext: data.checkouttimetext,
             howmanypeople: data.howmanypeople,
             howmanybedrooms: data.howmanybedrooms,
             howmanybathrooms: data.howmanybathrooms,
@@ -100,7 +109,7 @@ function Addplace() {
 
 
   return (
-    <Container className="my-5">
+    <Container className="my-5" style={{paddingBottom: 200}}>
       <Row>
         <h4>Add new place</h4>
       </Row>
@@ -159,31 +168,66 @@ function Addplace() {
                 </Col>
               </Row>
 
-              <h5 className="mt-5 mx-3">Health and safety</h5>
+
+          <Col xs={12} sm={12} md={12}>
+              <h5 className="mt-5 mx-3">Good to know</h5>
+
+              <Row className="mx-1 my-4">
+                <h6>Rules</h6>
+                <Col xs={12} sm={12} md={12} className="mb-2">
+                        <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }}  className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentRules type="checkintime" />}</Form.Check.Label>
+                                    <input type={'time'} {...register("checkintimeaftertext", { required: true })} />
+                        </Form.Check>
+                </Col>
+                <Col xs={12} sm={12} md={12} className="mb-2">
+                        <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }}  className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentRules type="checkouttime" />}</Form.Check.Label>
+                                    <input type={'time'} {...register("checkouttimetext", { required: true })} />
+                        </Form.Check>
+                </Col>
+                <Col xs={12} sm={12} md={12} className="mb-2">
+                        <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }}  className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentRules type="nosmoking" />}</Form.Check.Label>
+                                    <Form.Check.Input type={'checkbox'} {...register("nosmoking", { required: false })} />
+                        </Form.Check>
+                </Col>
+                <Col xs={12} sm={12} md={12} className="mb-2">
+                        <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }}  className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentRules type="nopartiesorevents" />}</Form.Check.Label>
+                                    <Form.Check.Input type={'checkbox'} {...register("nopartiesorevents", { required: false })} />
+                        </Form.Check>
+                </Col>
+              </Row>
+          </Col>
+
+
+
+              <h6 className="mt-5 mx-3">Health and safety</h6>
 
               <Row className="mx-1 my-4">
                 <Col xs={12} sm={12} md={12}>
-                        <Form.Check type={'radio'} style={{ paddingLeft: 0 }}  className="d-flex justify-content-between">
-                                    <Form.Check.Label className="">{`Nearby lake, river, water`}</Form.Check.Label>
-                                    <Form.Check.Input type={'radio'} {...register("nearbylakeriverwater", { required: false })} />
+                        <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }}  className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentHealthSafety type="nearbylakeriverwater" />}</Form.Check.Label>
+                                    <Form.Check.Input type={'checkbox'} {...register("nearbylakeriverwater", { required: false })} />
                         </Form.Check>
                 </Col>
                 <Col xs={12} sm={12} md={12}>
-                        <Form.Check type={'radio'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                                    <Form.Check.Label className="">{`Height without railings or safety`}</Form.Check.Label>
-                                    <Form.Check.Input type={'radio'}  {...register("heightwithoutrailingsorsafety", { required: false })} />
+                        <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentHealthSafety type="heightwithoutrailingsorsafety" />}</Form.Check.Label>
+                                    <Form.Check.Input type={'checkbox'}  {...register("heightwithoutrailingsorsafety", { required: false })} />
                         </Form.Check>
                 </Col>
                 <Col xs={12} sm={12} md={12}>
-                            <Form.Check type={'radio'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                                    <Form.Check.Label className="">{`Carbon Monoxide Alarm`}</Form.Check.Label>
-                                    <Form.Check.Input type={'radio'}  {...register("carbonmonoxidealarm", { required: false })} />
+                            <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentHealthSafety type="carbonmonoxidealarm" />}</Form.Check.Label>
+                                    <Form.Check.Input type={'checkbox'}  {...register("carbonmonoxidealarm", { required: false })} />
                             </Form.Check>
                 </Col>
                 <Col xs={12} sm={12} md={12}>
-                            <Form.Check type={'radio'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                                    <Form.Check.Label className="">{`Smoke detector`}</Form.Check.Label>
-                                    <Form.Check.Input type={'radio'}  {...register("smokedetector", { required: false })} />
+                            <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentHealthSafety type="smokedetectoralarm" />}</Form.Check.Label>
+                                    <Form.Check.Input type={'checkbox'}  {...register("smokedetector", { required: false })} />
                             </Form.Check>
                 </Col>
               </Row>
@@ -195,57 +239,57 @@ function Addplace() {
 
                 <Row className="mx-1 my-4">
                     <Col xs={12} sm={12} md={12}>
-                            <Form.Check type={'radio'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                                    <Form.Check.Label className="">{`Wifi`}</Form.Check.Label>
-                                    <Form.Check.Input type={'radio'} {...register("wifi", { required: false })} />
+                            <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentPlaceOffers type="wifi" />}</Form.Check.Label>
+                                    <Form.Check.Input type={'checkbox'} {...register("wifi", { required: false })} />
                             </Form.Check>
                     </Col>
                     <Col xs={12} sm={12} md={12}>
-                            <Form.Check type={'radio'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                                    <Form.Check.Label className="">{`Key box`}</Form.Check.Label>
-                                    <Form.Check.Input type={'radio'} {...register("keybox", { required: false })} />
+                            <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentPlaceOffers type="keybox" />}</Form.Check.Label>
+                                    <Form.Check.Input type={'checkbox'} {...register("keybox", { required: false })} />
                             </Form.Check>
                     </Col>
                     <Col xs={12} sm={12} md={12}>
-                            <Form.Check type={'radio'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                                    <Form.Check.Label className="">{`Tv`}</Form.Check.Label>
-                                    <Form.Check.Input type={'radio'} {...register("tv", { required: false })} />
+                            <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentPlaceOffers type="tv" />}</Form.Check.Label>
+                                    <Form.Check.Input type={'checkbox'} {...register("tv", { required: false })} />
                             </Form.Check>
                     </Col>
                     <Col xs={12} sm={12} md={12}>
-                            <Form.Check type={'radio'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                                    <Form.Check.Label className="">{`Refrigerator`}</Form.Check.Label>
-                                    <Form.Check.Input type={'radio'} {...register("refrigerator", { required: false })} />
+                            <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentPlaceOffers type="refrigerator" />}</Form.Check.Label>
+                                    <Form.Check.Input type={'checkbox'} {...register("refrigerator", { required: false })} />
                             </Form.Check>
                     </Col>
                     <Col xs={12} sm={12} md={12}>
-                            <Form.Check type={'radio'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                                    <Form.Check.Label className="">{`Washing Machine`}</Form.Check.Label>
-                                    <Form.Check.Input type={'radio'} {...register("washingmachine", { required: false })} />
+                            <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentPlaceOffers type="washingmachine" />}</Form.Check.Label>
+                                    <Form.Check.Input type={'checkbox'} {...register("washingmachine", { required: false })} />
                             </Form.Check>
                     </Col>
                     <Col xs={12} sm={12} md={12}>
-                            <Form.Check type={'radio'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                                    <Form.Check.Label className="">{`Sea Nearby`}</Form.Check.Label>
-                                    <Form.Check.Input type={'radio'} {...register("seanearby", { required: false })} />
+                            <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentPlaceOffers type="seanearby" />}</Form.Check.Label>
+                                    <Form.Check.Input type={'checkbox'} {...register("seanearby", { required: false })} />
                             </Form.Check>
                     </Col>
                     <Col xs={12} sm={12} md={12}>
-                            <Form.Check type={'radio'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                                    <Form.Check.Label className="">{`Nice view`}</Form.Check.Label>
-                                    <Form.Check.Input type={'radio'} {...register("niceview", { required: false })} />
+                            <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentPlaceOffers type="niceview" />}</Form.Check.Label>
+                                    <Form.Check.Input type={'checkbox'} {...register("niceview", { required: false })} />
                             </Form.Check>
                     </Col>
                     <Col xs={12} sm={12} md={12}>
-                            <Form.Check type={'radio'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                                    <Form.Check.Label className="">{`Free parking`}</Form.Check.Label>
-                                    <Form.Check.Input type={'radio'} {...register("freeparking", { required: false })} />
+                            <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentPlaceOffers type="freeparking" />}</Form.Check.Label>
+                                    <Form.Check.Input type={'checkbox'} {...register("freeparking", { required: false })} />
                             </Form.Check>
                     </Col>
                     <Col xs={12} sm={12} md={12}>
-                            <Form.Check type={'radio'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                                    <Form.Check.Label className="">{`Kitchen`}</Form.Check.Label>
-                                    <Form.Check.Input type={'radio'} {...register("kitchen", { required: false })} />
+                            <Form.Check type={'checkbox'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
+                                    <Form.Check.Label className="">{<IconComponentPlaceOffers type="kitchen" />}</Form.Check.Label>
+                                    <Form.Check.Input type={'checkbox'} {...register("kitchen", { required: false })} />
                             </Form.Check>
                     </Col>
                 </Row>
@@ -255,28 +299,28 @@ function Addplace() {
                 <Row className="mx-1 my-4">
                     <Col xs={12} sm={12} md={12}>
                                 <Form.Check type={'radio'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                                    <Form.Check.Label>{`People`}</Form.Check.Label>
+                                    <Form.Check.Label>{`People`}<FontAwesomeIcon className="icon-margin" icon={faPerson} /></Form.Check.Label>
                                     <input className="inputs input__borderradius--small input__small--width" type={'text'} {...register("howmanypeople", { required: true })}/>
                                 </Form.Check>
                                 {errors.howmanypeople && <span>This field is required</span>}
                     </Col>
                     <Col xs={12} sm={12} md={12}>
                                 <Form.Check type={'radio'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                                    <Form.Check.Label className="">{`Bedroom(s)`}</Form.Check.Label>
+                                    <Form.Check.Label className="">{`Bedroom(s)`}<FontAwesomeIcon className="icon-margin" icon={faDoorOpen} /></Form.Check.Label>
                                     <input className="inputs input__borderradius--small input__small--width" type={'text'} {...register("howmanybedrooms", { required: true })}/>
                                 </Form.Check>
                                 {errors.howmanybedrooms && <span>This field is required</span>}
                     </Col>
                     <Col xs={12} sm={12} md={12}>
                                 <Form.Check type={'radio'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                                    <Form.Check.Label className="">{`Bathroom(s)`}</Form.Check.Label>
+                                    <Form.Check.Label className="">{`Bathroom(s)`}<FontAwesomeIcon className="icon-margin" icon={faToilet} /></Form.Check.Label>
                                     <input className="inputs input__borderradius--small input__small--width" type={'text'} {...register("howmanybathrooms", { required: true })}/>
                                 </Form.Check>
                                 {errors.howmanybathrooms && <span>This field is required</span>}
                     </Col>
                     <Col xs={12} sm={12} md={12}>
                                 <Form.Check type={'radio'} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                                    <Form.Check.Label className="">{`Bed(s)`}</Form.Check.Label>
+                                    <Form.Check.Label className="">{`Bed(s)`}<FontAwesomeIcon className="icon-margin" icon={faBed} /></Form.Check.Label>
                                     <input className="inputs input__borderradius--small input__small--width" type={'text'} {...register("howmanybeds", { required: true })}/>
                                 </Form.Check>
                                 {errors.howmanybeds && <span>This field is required</span>}
@@ -336,7 +380,7 @@ function Addplace() {
 
                 <Row className="mx-1 my-4">
                     <Col xs={12} sm={12} md={12} style={{ paddingLeft: 0 }} className="d-flex justify-content-between">
-                        <p className="mx-3">Rate the place with decimals (4.75) </p>
+                        <p className="mx-3"><FontAwesomeIcon className="icon-margin" icon={faStar} />Rate the place with decimals (4.75) </p>
                         <input type="text" {...register("ratingdecimal", { required: true })} className="inputs input__borderradius--small input__small--width" />
                     </Col>
                     {errors.ratingdecimal && <span>Write in this form(4.75)</span>}
@@ -356,12 +400,12 @@ function Addplace() {
             </Col>
 
           </Row>
-          <Row>
-                <Button
+          <Row className="d-flex justify-content-center">
+                <button className="btn__holidaze--primary w-50"
                   type="submit"
                 >
                   {submitting ? "Adding place..." : "Add place"}
-                </Button>
+                </button>
           </Row>
         </fieldset>
       </Form>

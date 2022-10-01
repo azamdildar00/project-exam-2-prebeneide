@@ -5,6 +5,8 @@ import { BASE_URL, ENQUIRIES, POPULATE } from '../../constants/api';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/pro-solid-svg-icons';
 
 function EnquiryDetail() {
 
@@ -73,7 +75,7 @@ function EnquiryDetail() {
                                 <span>{data.attributes.establishmentArea}</span>
                             </div>
                             <div className="enquiry-detail__selectedproductinfo--row">
-                                <span>{data.attributes.establishmentRatingDecimal}</span>
+                                <span>{data.attributes.establishmentRatingDecimal}<FontAwesomeIcon className="icon-margin" icon={faStar} /></span>
                                 <span>{data.attributes.establishmentPriceNumber} kr night</span>
                             </div>
                         </Col>

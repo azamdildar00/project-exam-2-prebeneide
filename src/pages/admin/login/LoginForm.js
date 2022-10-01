@@ -65,7 +65,7 @@ function LoginForm() {
           <Container className="login__container">
             <Heading title="Login" />
             <Form onSubmit={handleSubmit(onSubmitHandler)}>
-              <div className="form__errormessage--div">
+              <div className="form__errormessage--center">
               {loginError && <FormErrorMessage>{loginError}</FormErrorMessage>}
               </div>
               <fieldset disabled={submitting}>
@@ -77,7 +77,7 @@ function LoginForm() {
                     placeholder="Username"
                     {...register("username")}
                   />
-                  <div className="form__errormessage--div">
+                  <div className="form__errormessage--center">
                     {errors.username && (
                       <FormErrorMessage>
                         {errors.username.message}
@@ -94,7 +94,7 @@ function LoginForm() {
                     placeholder="Password"
                     {...register("password")}
                   />
-                  <div className="form__errormessage--div">
+                  <div className="form__errormessage--center">
                     {errors.password && (
                       <FormErrorMessage>
                         {errors.password.message}
@@ -102,11 +102,9 @@ function LoginForm() {
                     )}
                   </div>
                 </Form.Group>
-                <Button
-                  variant="primary"
-                  type="submit">
+                <button className="btn__holidaze--primary" type="submit">
                   {submitting ? "Logging in..." : "Login"}
-                </Button>
+                </button>
               </fieldset>
             </Form>
           </Container>

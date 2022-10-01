@@ -1,3 +1,22 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+#root {
+    display:flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.wrapper {
+    flex: 1 0 auto;
+}
+
 .inputs {
     border-color: $colour-primary;
     border-style:solid;
@@ -23,17 +42,7 @@
     
 }
 
-.textarea {
-    border-color: $colour-primary;
-    border-style:solid;
-    font-size: $inter-font-size-20;
-    font-weight: $font-weight-medium;
-    border-radius: 10px;
-    padding: 10px;
-    width: 100%;
-}
-
-.btn {
+.btn__holidaze--primary {
     background-color: $colour-primary;
     color: $colour-white;
     border-radius: 27px;
@@ -41,12 +50,16 @@
     height: 45px;
     font-weight: 600;
     font-size: 20px;
+    border-style:none;
+    outline:0px !important;
+
 
     &:hover {
         border: 2px solid $colour-primary;
         color: $colour-primary !important;
         background-color: $colour-white !important;
         box-shadow: $box-shadow;
+        outline: 0px !important;
     }
 
     &:active {
@@ -54,6 +67,15 @@
         color: $colour-primary !important;
         background-color: $colour-white !important;
         box-shadow: $box-shadow;
+        outline:0px !important;
+    }
+
+    &:focus {
+        border: 2px solid $colour-primary;
+        color: $colour-primary !important;
+        background-color: $colour-white !important;
+        box-shadow: $box-shadow; 
+        outline:0px !important;
     }
 
     &:disabled {
@@ -61,5 +83,38 @@
         color: $colour-primary !important;
         background-color: $colour-white !important;
         box-shadow: $box-shadow;
+        outline:0px !important;
     }
 }
+
+.icon-margin {
+    margin-left: 4px;
+    margin-right: 4px
+}
+
+input {
+    border: 1px solid $colour-primary;
+    &:focus {
+        outline:0px !important; 
+        border: 2px solid $colour-primary;
+        box-shadow: $box-shadow !important;
+    }
+}
+
+.textarea {
+    border: 1px solid $colour-primary;
+    font-size: $inter-font-size-20;
+    font-weight: $font-weight-medium;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    &:focus {
+        outline:0px !important;
+        border: 2px solid $colour-primary;
+        box-shadow: $box-shadow !important;
+    }
+}
+
+
+
+ 

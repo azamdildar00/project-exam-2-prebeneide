@@ -1,0 +1,18 @@
+.footer {
+    flex-shrink: 0;
+    background-color: $colour-primary;
+    color: $colour-white;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items:center;
+
+    &__logo {
+        text-align: end;
+        img {
+            height: 33px;
+        }
+    }
+}

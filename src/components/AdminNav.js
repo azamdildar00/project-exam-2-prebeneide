@@ -1,4 +1,5 @@
 import React from 'react'
+import logo from "../assets/logo/holidaze_logo_green.png"
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Button from 'react-bootstrap/Button';
@@ -23,16 +24,7 @@ function AdminNav() {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand>Holidaze</Navbar.Brand>
-        <Form className="d-flex">
-          <Form.Control
-            type="search"
-            placeholder="Search"
-            className="me-2"
-            aria-label="Search"
-          />
-          <Button variant="outline-success">Search</Button>
-        </Form>
+        <Navbar.Brand><img className="nav-logo" alt="logo" src={logo}/></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav

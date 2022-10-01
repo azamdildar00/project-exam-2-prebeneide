@@ -11,6 +11,9 @@ import Table from "react-bootstrap/Table";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/pro-solid-svg-icons';
+import LoadingSpinner from "../components/common/LoadingSpinner";
 
 const schema = yup.object().shape({
     checkin: yup.string().required("Please fill in your check-in date"),
@@ -110,7 +113,9 @@ function Enquiry() {
     );
 
     if (loading) {
-        return <div>Loading...</div>;
+        return  <>
+                  <LoadingSpinner/>
+                </>
     }
 
     if (error) {
@@ -183,7 +188,7 @@ function Enquiry() {
                     <span>{data.attributes.area}</span>
                   </div>
                   <div className="send-enquiry__selectedproductinfo--row">
-                    <span>{data.attributes.ratingdecimal}</span>
+                    <span><FontAwesomeIcon className="icon-margin" icon={faStar} /> {data.attributes.ratingdecimal}</span>
                     <span>{data.attributes.price} kr night</span>
                   </div>
                 </Col>
@@ -292,7 +297,7 @@ function Enquiry() {
                     </Col>
                 </Row>
                 <Row className="mx-auto">
-                    <Button type="submit">Send enquiry</Button>
+                    <button className="btn__holidaze--primary" type="submit">Send enquiry</button>
                 </Row>
             </Col>
           </Row>

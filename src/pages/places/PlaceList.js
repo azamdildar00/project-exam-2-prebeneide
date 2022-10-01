@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Spinner from "react-bootstrap/Spinner";
 import Alert from "react-bootstrap/Alert";
 import { BASE_URL, PLACES_API, POPULATE } from "../../constants/api";
 import PlaceItem from "./PlaceItem";
+import LoadingSpinner from "../../components/common/LoadingSpinner";
 
 function PlaceList() {
     const [places, setPlaces] = useState([]);
@@ -33,10 +33,7 @@ function PlaceList() {
     }, []);
 
     if (loading) {
-        return (
-          <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
+        return ( <LoadingSpinner />
         );
     }
 

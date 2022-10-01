@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Table } from 'react-bootstrap';
 import { BASE_URL } from '../../constants/api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/pro-solid-svg-icons';
 
 const url = BASE_URL + "/api/enquiries";
 
@@ -77,7 +79,7 @@ function Enquiries() {
                             <div className="enquiries-inbox__table--product-info">
                                 <span>{enquiries.attributes.establishmentName}</span>
                                 <span>{enquiries.attributes.establishmentArea} </span>
-                                <span>{enquiries.attributes.establishmentRatingDecimal} rating in stars</span>
+                                <span>{enquiries.attributes.establishmentRatingDecimal} <FontAwesomeIcon className="icon-margin" icon={faStar} /></span>
                                 <span>{enquiries.attributes.establishmentPeople} </span>
                                 <span>{enquiries.attributes.establishmentPriceNumber} kr night</span>
                             </div>

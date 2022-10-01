@@ -5,18 +5,35 @@
         border-style: none;
         height: 30px;
         min-width: 400px;
+        border: 1px solid $colour-primary;
+
+        &:focus {
+            outline:0px !important; 
+            border: 2px solid $colour-primary;
+            box-shadow: $box-shadow !important;
+        }
+
+        &::selection {
+            border: 2px solid $colour-primary !important;
+            box-shadow: none !important;
+        }
     }
+
 }
 
 .navbar__search--dropdown-menu {
     display:block;
-    top: 100%;
     position: absolute;
     background-color: $colour-white;
-    color: $colour-primary;
+    color: $colour-primary-black;
     height: auto;
     min-width: 400px;
     z-index: 5000;
+    border-right: 1px solid $colour-primary;
+    border-left: 1px solid $colour-primary;
+    border-radius: 10px;
+    margin-top: 5px;
+    box-shadow: $box-shadow-green;
 }
 
 .navbar__search--dropdown-item {
@@ -24,9 +41,77 @@
     border-right: 1px solid $colour-primary;
     border-left: 1px solid $colour-primary;
     border-bottom: 1px solid $colour-primary;
+    min-height: 200px;
 
     &:hover {
         background-color: $colour-primary;
         color: $colour-white;
     }
 }
+
+.navbar__search--dropdown-image {
+    width: 110px;
+    height: 110px;
+    display:flex;
+    align-self: center;
+}
+
+.navbar__search--dropdown-image > img {
+    height:100%;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-left: 13px;
+}
+
+.navbar__search--dropdown-infocolumn {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding:0;
+}
+
+.navbar__search--dropdown-areacolumn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bg-dark {
+    background-color: $colour-white !important;
+}
+
+.nav-logo {
+    height: 70px;
+}
+
+.nav-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.nav-link__holidaze--primary {
+    color: $colour-primary !important;
+    &:active {
+        color: yellow !important;
+    }
+    &:focus {
+        color: blue !important;
+    }
+    &:hover {
+        color: tomato !important;
+    }
+}
+
+.nav-link {
+    color: #6eddbc !important;
+    &:hover {
+        color: #3ba283 !important;
+    }
+}
+
+.nav-link.active {
+    color: #3ba283 !important;
+}
+
+

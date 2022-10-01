@@ -1,3 +1,5 @@
+
+
 // custom
 
 $colour-primary: #6EDDBC;
@@ -21,6 +23,26 @@ $theme-colors: (
 // Box-shadow
 
 $box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+$box-shadow-green: #6EDDBC 0px 8px 24px;
+
+$input-btn-focus-box-shadow: none;
+$input-btn-focus-width: 0;
+$btn-focus-box-shadow: none;
+
+$bs-btn-color: #fff;
+$bs-btn-bg: #6eddbc;
+$bs-btn-border-color: #6eddbc;
+$bs-btn-hover-color: #fff;
+$bs-btn-hover-bg: #6eddbc;
+$bs-btn-hover-border-color: #6eddbc;
+$bs-btn-focus-shadow-rgb: 49, 132, 253;
+$bs-btn-active-color: #fff;
+$bs-btn-active-bg: #6eddbc;
+$bs-btn-active-border-color: #6eddbc;
+$bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+$bs-btn-disabled-color: #fff;
+$bs-btn-disabled-bg: #6eddbc;
+$bs-btn-disabled-border-color: #6eddbc;
 
 // Font
 

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import logo from "../assets/logo/holidaze_logo_green.png"
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';
 import axios from 'axios';
 import { BASE_URL, PLACES_API, POPULATE} from '../constants/api';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useNavigate } from 'react-router-dom';
+import DropDownProductItem from './DropDownProductItem';
 
 function UserNav() {
   const [places, setPlaces] = useState([]);
@@ -47,8 +48,8 @@ function UserNav() {
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
-      <Container>
-        <Navbar.Brand>Holidaze</Navbar.Brand>
+      <Container className="nav-container">
+        <Navbar.Brand href="/"><img className="nav-logo" alt="logo" src={logo}/></Navbar.Brand>
 
         <div className="navbar__search--container">
           <input
@@ -68,21 +69,21 @@ function UserNav() {
           {suggestions &&
             suggestions.map((suggestion) => (
               <div className="navbar__search--dropdown-item" key={suggestion.id} onClick={()=> redirect(suggestion.id) }>
-                {suggestion.attributes.name}
+                <DropDownProductItem data={suggestion} />
               </div>
             ))}
           </div>
         </div>
 
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
+        <Navbar.Toggle/>
+        <Navbar.Collapse>
           <Nav
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: "100px" }}
-            navbarScroll
+            
           >
             <LinkContainer to="/">
-              <Nav.Link>Home</Nav.Link>
+              <Nav.Link >Home</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/contact">
               <Nav.Link>Contact</Nav.Link>

@@ -3,6 +3,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import { LinkContainer } from "react-router-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faBed } from '@fortawesome/pro-solid-svg-icons';
 
 function PlaceItem({ id, image, name, rating, people, price, area}) {
     return (
@@ -17,10 +19,10 @@ function PlaceItem({ id, image, name, rating, people, price, area}) {
                         <p className="card__text--name">{name}</p>
                     </Col>
                     <Col>
-                        <p className="card__text--rating d-flex justify-content-end">{rating}</p>
+                        <p className="card__text--rating d-flex justify-content-end">{rating}<span><FontAwesomeIcon className="icon-margin" icon={faStar} /></span></p>
                     </Col>
                 </Row>
-                <p className="card__text--people">{people}</p>
+                <p className="card__text--people"><span><FontAwesomeIcon className="icon-margin" icon={faBed} /></span>{people}</p>
                 <Row>
                     <Col>
                         <p className="card__text--price">{price} kr night</p>

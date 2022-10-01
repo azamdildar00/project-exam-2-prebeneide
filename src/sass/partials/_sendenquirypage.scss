@@ -47,11 +47,37 @@
 }
 
 .send-enqury__guestsdropdown {
-    border: 2px solid $colour-primary;
+    border: 1px solid $colour-primary;
     height: 35px;
     color: $colour-dark-grey;
     background-color: $colour-white;
     font-family: $font-family-base;
     font-size: $inter-font-size-14;
-    text-aling: center;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: none !important;
+
+    &:focus {
+        background-color: $colour-primary !important;
+        color: $colour-white;
+        outline: 0 !important;
+        box-shadow: none !important;
+    }
+
+    &:hover {
+        background-color: $colour-primary !important;
+        outline: 0 !important;
+        box-shadow: none !important;
+    }
+    &:active {
+        background-color: $colour-primary !important;
+        outline: 0 !important;
+        box-shadow: none !important;
+    }
+    &:disabled {
+        background-color: $colour-primary !important;
+        outline: 0 !important;
+        box-shadow: none !important;
+    }
+
 }

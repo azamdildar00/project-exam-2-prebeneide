@@ -12,20 +12,21 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/pro-solid-svg-icons';
+import { faStar, faAnglesLeft, faAngleLeft } from '@fortawesome/pro-solid-svg-icons';
 import LoadingSpinner from "../components/common/LoadingSpinner";
+import FormErrorMessage from "../components/common/FormErrorMessage";
 
 const schema = yup.object().shape({
     checkin: yup.string().required("Please fill in your check-in date"),
     checkout: yup.string().required("Please fill in your check-out date"),
-    firstname: yup.string().required("Please fill in your firstname"),
-    lastname: yup.string().required("Please fill in your lastname"),
-    address: yup.string().required("Please fill in your address"),
-    postalcode: yup.string().required("Please fill in your postal code"),
-    country: yup.string().required("Please fill in your Country"),
+    firstname: yup.string().required("Please fill in your firstname").min(2,"Your firstname must contain at least 2 characters"),
+    lastname: yup.string().required("Please fill in your lastname").min(2,"Your lastname must contain at least 2 characters"),
+    address: yup.string().required("Please fill in your address").min(4,"Your address must contain at least 4 characters"),
+    postalcode: yup.string().required("Please fill in your postal code").min(4, "Postalcode must contain 4 numbers").max(4, "Postalcode must only contain 4 numbers"),
+    country: yup.string().required("Please fill in your country"),
     city: yup.string().required("Please fill in your city"),
-    phonenumber: yup.string().required("Please fill in your phonenumber"),
-    email: yup.string().required("Please fill in your email"),
+    phonenumber: yup.string().required("Please fill in your phonenumber").min(8,"Phonenumber must contain at least 8 numbers"),
+    email: yup.string().email("Please use a valid email").required("Please fill in your email"),
 });
 
 function Enquiry() {
@@ -39,6 +40,7 @@ function Enquiry() {
     const [days, setDays] = useState(0);
     const [checkin, setCheckin] = useState(new Date());
     const [checkout, setCheckout] = useState(new Date());
+    const [guestError, setguestError] = useState(null);
 
     const handleGuests = (value) => {
         setGuests(value)
@@ -102,6 +104,7 @@ function Enquiry() {
                     const response = await axios.get(getEstablishmentUrl);
                         console.log(response.data.data);
                         setData(response.data.data);
+                        setguestError(null);
                 } catch (error) {
                     setError(error.toString());
                 } finally {
@@ -123,6 +126,12 @@ function Enquiry() {
     }
 
     const sendEnquiry = async (_data) => {
+
+      if (guests === 0) {
+        setguestError(true)
+        return;
+      }
+
         const createEnquiryUrl = BASE_URL + "/api/enquiries";
         const body = {
             "data": { 
@@ -149,6 +158,7 @@ function Enquiry() {
         try {
             await axios.post(createEnquiryUrl, body);
             console.log("enquiry sent")
+            navigate(`/confirmation/{id}`)
         } catch (error) {
             console.log("error:", "invalid inputs", error);
         }
@@ -162,16 +172,19 @@ function Enquiry() {
     
 
     return (
-      <Container className="mt-5 px-5">
+      <Container className="mt-5 px-md-5 px-xs-5" style={{paddingBottom: 150}}>
+        <Row xs={12} sm={12} md={12} lg={12}>
+          <h6 className="mb-5"><span onClick={() => navigate("/")}><FontAwesomeIcon icon={faAnglesLeft}/> Home </span><span className="mb-5" onClick={() => navigate(-1)}><FontAwesomeIcon icon={faAngleLeft}/> {data.attributes.name} </span></h6>
+        </Row>
         <Row>
-          <h6>Confirm your request details and send an enquiry</h6>
+          <h4>Confirm your request details and send an enquiry</h4>
         </Row>
         <form onSubmit={handleSubmit(sendEnquiry)}>
-          <Row>
-            <Col xs={12} sm={12} md={6}>
-              <h5 className="my-4">Your booking details</h5>
+          <Row className="d-flex justify-content-between">
+            <Col xs={12} sm={12} md={12} lg={12} xl={6}>
+              <h5 className="mb-sm-2 mb-md-5 mt-4">Your booking details</h5>
               <Row className="send-enquiry__selectedproductinfo--box mx-2">
-                <Col xs={12} sm={4} md={5}>
+                <Col xs={12} sm={12} md={12} lg={5}>
                   <div className="send-enquiry__selectedproductinfo--image">
                     <img
                       alt={
@@ -182,7 +195,7 @@ function Enquiry() {
                     />
                   </div>
                 </Col>
-                <Col className="send-enquiry__selectedproductinfo--textdiv">
+                <Col xxs={12} sm={12} md={12} lg={7} className="send-enquiry__selectedproductinfo--textdiv">
                   <div className="send-enquiry__selectedproductinfo--row">
                     <span>{data.attributes.name}</span>
                     <span>{data.attributes.area}</span>
@@ -194,19 +207,23 @@ function Enquiry() {
                 </Col>
               </Row>
               <Row className="mx-1">
-                <h6 className="mt-5 mb-2">Dates</h6>
-                <Col xs={12} sm={6} md={6} className="my-2">
-                  <input type="date" placeholder="check-in" className="inputs input__borderradius--small" min={disablePastDate()} {...register("checkin", { required: true })} onChange={(e) => setCheckin(e.target.value)} />
-                  <span>{errors.checkin?.message}</span>
+                <h6 className="mt-5 mb-1">Dates</h6>
+                <Col xs={12} sm={12} lg={6} className="my-2">
+                  <input type="date" placeholder="check-in" className="inputs input__borderradius--small" min={disablePastDate()} {...register("checkin")} onChange={(e) => setCheckin(e.target.value)} />
+                  <div className="form__errormessage--contactform-left">
+                    {errors.checkin && <FormErrorMessage>{errors.checkin.message}</FormErrorMessage>}
+                  </div>
                 </Col>
-                <Col xs={12} sm={6} md={6} className="my-2">
-                    <input type="date" className="inputs input__borderradius--small" min={disablePastDateForCheckout()} {...register("checkout", { required: true })} onChange={(e) => handleCheckout(e.target.value)} />
-                    <span>{errors.checkout?.message}</span>
+                <Col xs={12} md={12} lg={6} className="my-2">
+                    <input type="date" className="inputs input__borderradius--small" min={disablePastDateForCheckout()} {...register("checkout")} onChange={(e) => handleCheckout(e.target.value)} />
+                    <div className="form__errormessage--contactform-left">
+                      {errors.checkout && <FormErrorMessage>{errors.checkout.message}</FormErrorMessage>}
+                    </div>
                 </Col>
               </Row>
-              <Row className="mx-1">
-                <h6 className="mt-5 mb-2">Guests</h6>
-                <Col xs={12} sm={6} md={6}>
+              <Row className="mx-1 pb-md-5">
+                <h6 className="mt-2 mt-md-5 mb-1">Guests</h6>
+                <Col xs={12} md={12} lg={6}>
                   <Dropdown>
                     <Dropdown.Toggle className="send-enqury__guestsdropdown">
                       {guests === 0 ? <> -- select -- </> : guests}
@@ -226,77 +243,77 @@ function Enquiry() {
                     </Dropdown.Menu>
                   </Dropdown>
                 </Col>
+                {guestError && <FormErrorMessage>Please select number of guests</FormErrorMessage>}
               </Row>
-              <Row className="send-enquiry__table--div my-4 mx-2 mt-5">
-                <Table>
+              <Row className="send-enquiry__table--div my-4 my-md-5 mx-2" style={{overflowX: "auto"}}>
+                <Table responsive="sm" borderless className="my-2">
                       <tbody>
                         <tr>
                             <td>{data.attributes.price} kr x {days} nights</td>
                             <td></td>
-                            <td>{getPrice()} kr</td>
-
+                            <td className="text-end">{getPrice()} kr</td>
                         </tr>
                         <tr>
                             <td>Service fee</td>
                             <td></td>
-                            <td>150 kr</td>
+                            <td className="text-end">150 kr</td>
                         </tr>
                         <tr>
                             <td>Total Price (NOK)</td>
                             <td></td>
-                            <td>{getTotalPrice()} kr</td>
+                            <td className="text-end">{getTotalPrice()} kr</td>
                         </tr>
                       </tbody>
                 </Table>
               </Row>
             </Col>
 
-            <Col xs={12} sm={12} md={6} className="send-enquiry__personalinformation--container">
+            <Col xs={12} sm={12} md={12} lg={12} xl={6} className="send-enquiry__personalinformation--container">
                 <h5 className="my-4">Your personal information</h5>
                 <Row className="mx-1">
-                    <Col xs={12} sm={6} md={6} className="mb-3">
+                    <Col xs={12} sm={12} md={12} lg={6} className="mb-3">
                         <h6 className="mb-3">Firstname</h6>
                         <input type="text" className="inputs input__borderradius--small" placeholder="Firstname" {...register("firstname", { required: true })}></input>
-                        <span>{errors.firstname?.message}</span>
+                        {errors.firstname && <FormErrorMessage>{errors.firstname.message}</FormErrorMessage>}
                     </Col>
-                    <Col xs={12} sm={6} md={6} className="mb-3">
+                    <Col xs={12} md={12} lg={6} className="mb-3">
                         <h6 className="mb-3">Lastname</h6>
                         <input type="text" className="inputs input__borderradius--small" placeholder="Lastname" {...register("lastname", { required: true })}></input>
-                        <span>{errors.lastname?.message}</span>
+                        {errors.lastname && <FormErrorMessage>{errors.lastname.message}</FormErrorMessage>}
                     </Col>
 
                     <Col xs={12} sm={12} md={12} className="my-3">
                         <h6 className="mb-3">Address</h6>
                         <input type="text" className="inputs input__borderradius--small" placeholder="Address" {...register("address", { required: true })}></input>
-                        <span>{errors.address?.message}</span>
+                        {errors.address && <FormErrorMessage>{errors.address.message}</FormErrorMessage>}
                     </Col>
                     <Col xs={12} sm={12} md={6} className="my-3">
                         <h6 className="mb-3">Postal Code</h6>
                         <input type="text" className="inputs input__borderradius--small" placeholder="Postal Code" {...register("postalcode", { required: true })}></input>
-                        <span>{errors.postalcode?.message}</span>
+                        {errors.postalcode && <FormErrorMessage>{errors.postalcode.message}</FormErrorMessage>}
                     </Col>
                     <Col xs={12} sm={12} md={6} className="my-3">
                         <h6 className="mb-3">City</h6>
                         <input type="text" className="inputs input__borderradius--small" placeholder="City" {...register("city", { required: true })}></input>
-                        <span>{errors.city?.message}</span>
+                        {errors.city && <FormErrorMessage>{errors.city.message}</FormErrorMessage>}
                     </Col>
                     <Col xs={12} sm={12} md={6} className="my-3">
                         <h6 className="mb-3">Country</h6>
                         <input type="text" className="inputs input__borderradius--small" placeholder="Country" {...register("country", { required: true })}></input>
-                        <span>{errors.country?.message}</span>
+                        {errors.country && <FormErrorMessage>{errors.country.message}</FormErrorMessage>}
                     </Col>
                     <Col xs={12} sm={12} md={12} className="my-3">
                         <h6 className="mb-3">Email</h6>
                         <input type="text" className="inputs input__borderradius--small" placeholder="Email" {...register("email", { required: true })}></input>
-                        <span>{errors.email?.message}</span>
+                        {errors.email && <FormErrorMessage>{errors.email.message}</FormErrorMessage>}
                     </Col>
                     <Col xs={12} sm={12} md={12} className="my-3">
                         <h6 className="mb-3">Phonenumber</h6>
                         <input type="text" className="inputs input__borderradius--small" placeholder="Phonenumber" {...register("phonenumber", { required: true })}></input>
-                        <span>{errors.phonenumber?.message}</span>
+                        {errors.phonenumber && <FormErrorMessage>{errors.phonenumber.message}</FormErrorMessage>}
                     </Col>
                 </Row>
-                <Row className="mx-auto">
+                <Row className="mx-auto" style={{marginTop: 80}}>
                     <button className="btn__holidaze--primary" type="submit">Send enquiry</button>
                 </Row>
             </Col>

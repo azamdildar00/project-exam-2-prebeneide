@@ -5,7 +5,7 @@ function Welcome() {
   return (
     <Container>
         <Row>
-            <h5>Welcome username.</h5> 
+            <h5>Welcome</h5> 
         </Row>
     </Container>
   )

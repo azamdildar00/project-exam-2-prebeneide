@@ -38,7 +38,7 @@ function PlaceList() {
     }
 
     if (error) {
-        return <Alert key="danger" variant="danger">An error occured: {error}</Alert>;
+        return <div>An error occured: {error}</div>;
     }
 
     return (

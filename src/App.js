@@ -22,6 +22,7 @@ import EnquiryDetail from "./pages/admin/EnquiryDetail";
 import ContactUsSuccess from "./pages/ContactUsSuccess";
 import Inbox from "./pages/admin/Inbox";
 import InboxDetail from "./pages/admin/InboxDetail";
+import EnquirySentSuccess from "./pages/EnquirySentSuccess";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/success" element={<ContactUsSuccess />} />
                 <Route path="/detail/:id" element={<PlaceDetail />} />
+                <Route path="/confirmation/:id" element={<EnquirySentSuccess />} />
                 <Route path="/sendEnquiry/:id" element={<Enquiry />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/admin/welcome" element={<Welcome />} />

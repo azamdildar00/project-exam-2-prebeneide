@@ -1,0 +1,11 @@
+.add-place__container {
+    &--main-row {
+        border: 2px solid $colour-primary;
+        border-radius: 10px;
+        box-shadow: $box-shadow;
+    }
+}
+
+.add-place__image-input {
+    border: none !important;
+}

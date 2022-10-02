@@ -10,6 +10,7 @@ import IconComponentPlaceOffers from "../../components/iconcomponents/IconCompon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPerson, faDoorOpen, faBed, faToilet, faStar, faClock, faAlarmClock, faBanSmoking, faBan, faWater, faPaw, faDiamondExclamation, faTriangleExclamation, faSensorOn, faSensorCloud,  } from '@fortawesome/pro-solid-svg-icons';
 import LoadingSpinner from "../../components/common/LoadingSpinner";
+import BackLink from "../../components/common/BackLink";
 
 
 function PlaceDetail() {
@@ -60,6 +61,8 @@ function PlaceDetail() {
 
     return (
         <Container className="mt-5 px-md-2" style={{paddingBottom: 150}}>
+
+            <BackLink title="Back to home" />
 
             <Row>
                 <Col xs={12} sm={12} md={12} className="d-flex justify-content-between">

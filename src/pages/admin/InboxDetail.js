@@ -4,6 +4,8 @@ import { BASE_URL } from '../../constants/api';
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import LoadingSpinner from '../../components/common/LoadingSpinner';
+import BackLink from '../../components/common/BackLink';
 
 function InboxDetail() {
     const navigate = useNavigate();
@@ -43,11 +45,9 @@ function InboxDetail() {
     }
 
     if (loading) {
-        return <div className="loading-div">
-            <Spinner animation="border" variant="info" role="status">
-                <span className="visually-hidden">Loading...</span>
-            </Spinner>
-        </div>
+        return  <>
+                  <LoadingSpinner/>
+                </>
     }
 
     if (error) {
@@ -56,56 +56,56 @@ function InboxDetail() {
 
 
   return (
-            <Container className="mt-4">
-                <Row className="mb-5">
-                    <Col className="mb-4">
-                        <h5 onClick={() => navigate(-1)}>Back to inbox</h5>
-                    </Col>
-                    <h5>Message</h5>
-                </Row>
-                <Row className="my-md-3 mx-md-5">
-                    <Col className="px-md-5">
-                        <h6 className="mb-2">From</h6>
-                    </Col>
-                    <Col className="px-md-5">
-                        <span>{message.attributes.name}</span>
-                    </Col>
-                    <Col className="px-md-5">
-                        <h6 className="mb-4">Email</h6>
-                    </Col>
-                    <Col className="px-md-4">
-                        <span>{message.attributes.email}</span>
-                    </Col>
-                </Row>
-
-                <Row className="my-md-3 mx-md-5">
-                    <Col className="px-md-5">
-                        <h6 className="mb-2">Subject</h6>
-                    </Col>
-                    <Col className="px-md-5">
-                        <span>{message.attributes.subject}</span>
-                    </Col>
-                    <Col className="px-md-5">
-                        <h6>Date</h6>
-                    </Col>
-                    <Col className="px-md-3 px-xs-5">
-                        <span>{getFormattedDate(message.attributes.createdAt)}</span>
-                    </Col>
-                    <Col className="px-md-3 px-xs-5">
-                        <h6 className="mb-2">Time</h6>
-                    </Col>
-                    <Col>
-                        <span>{getFormattedTime(message.attributes.createdAt)}</span>
-                    </Col>
-                </Row>
-                <Row className="my-md-3 mx-md-5">
-                    <Col className="px-md-5">
-                        <h6 className="mb-4">Message</h6>
-                        <Col>
-                            <span>{message.attributes.message}</span>
+            <Container className="mt-5" style={{paddingBottom: 50}}>
+                <BackLink title="Back to inbox" />
+                    <Row className="mb-5">
+                        <h5>Message</h5>
+                    </Row>
+                    <Row className="my-md-3 mx-md-5">
+                        <Col xs={4} sm={4} md={3} className="px-md-5">
+                            <h6 className="mb-2">From</h6>
                         </Col>
-                    </Col>
-                </Row>
+                        <Col xs={8} sm={8} md={3} className="px-md-5">
+                            <span>{message.attributes.name}</span>
+                        </Col>
+                        <Col xs={4} sm={4} md={3} className="px-md-5">
+                            <h6 className="mb-4">Email</h6>
+                        </Col>
+                        <Col xs={8} sm={8} md={3} className="px-md-4">
+                            <span>{message.attributes.email}</span>
+                        </Col>
+                    </Row>
+
+                    <Row className="my-md-3 mx-md-5">
+                        <Col xs={4} sm={4} md={3} className="px-md-5">
+                            <h6 className="mb-2">Subject</h6>
+                        </Col>
+                        <Col xs={8} sm={8} md={3} className="px-md-5">
+                            <span>{message.attributes.subject}</span>
+                        </Col>
+                        <Col xs={4} sm={4} md={3} className="px-md-5">
+                            <h6>Date</h6>
+                        </Col>
+                        <Col xs={8} sm={8} md={3} className="px-md-3 px-xs-5">
+                            <span>{getFormattedDate(message.attributes.createdAt)}</span>
+                        </Col>
+                    </Row>
+                    <Row className="my-md-3 mx-md-5">
+                        <Col xs={4} sm={4} md={3} className="px-md-5">
+                            <h6 className="mb-2">Time</h6>
+                        </Col>
+                        <Col xs={8} sm={8} md={3}>
+                            <span>{getFormattedTime(message.attributes.createdAt)}</span>
+                        </Col>
+                    </Row>
+                    <Row className="my-md-3 mx-md-5">
+                        <Col xs={12} sm={12} md={12} className="px-md-5">
+                            <h6 className="mb-4">Message</h6>
+                            <Col xs={12} sm={12} md={12} className="">
+                                <span>{message.attributes.message}</span>
+                            </Col>
+                        </Col>
+                    </Row>
             </Container>
   )
 }

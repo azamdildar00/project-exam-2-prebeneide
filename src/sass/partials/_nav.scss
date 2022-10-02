@@ -1,11 +1,29 @@
+
+
 .navbar__search--container {
+    display: flex;
+    justify-content: center;
     width: 100%;
+
+    @media screen and (max-width: 991px) {
+        margin-top: 40px;
+    }
+
     input {
         border-radius: 15px;
         border-style: none;
         height: 30px;
         min-width: 400px;
         border: 1px solid $colour-primary;
+
+        @media screen and (max-width: 410px) {
+            min-width: auto;
+        }
+
+        @media screen and (max-width: 575px) {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
 
         &:focus {
             outline:0px !important; 
@@ -32,8 +50,12 @@
     border-right: 1px solid $colour-primary;
     border-left: 1px solid $colour-primary;
     border-radius: 10px;
-    margin-top: 5px;
-    box-shadow: $box-shadow-green;
+    margin-top: 32px;
+    box-shadow: $box-shadow;
+
+    @media screen and (max-width: 410px) {
+        min-width: auto;
+    }
 }
 
 .navbar__search--dropdown-item {
@@ -41,7 +63,7 @@
     border-right: 1px solid $colour-primary;
     border-left: 1px solid $colour-primary;
     border-bottom: 1px solid $colour-primary;
-    min-height: 200px;
+    min-height: 100px;
 
     &:hover {
         background-color: $colour-primary;
@@ -83,23 +105,18 @@
 
 .nav-logo {
     height: 70px;
+    @media screen and (max-width: 579px) {
+        height: 60px;
+    }
 }
 
 .nav-container {
     margin-top: 30px;
     margin-bottom: 30px;
-}
 
-.nav-link__holidaze--primary {
-    color: $colour-primary !important;
-    &:active {
-        color: yellow !important;
-    }
-    &:focus {
-        color: blue !important;
-    }
-    &:hover {
-        color: tomato !important;
+    @media screen and (max-width: 579px) {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
 
@@ -113,5 +130,28 @@
 .nav-link.active {
     color: #3ba283 !important;
 }
+
+.navbar-dark .navbar-toggler {
+    color: $colour-primary !important;
+    background-color: $colour-primary !important;
+
+    @media screen and (max-width: 575px) {
+        margin-right: 20px;
+    }
+}
+
+.navbar-brand {
+    @media screen and (max-width: 575px) {
+        margin-left: 20px;
+    }
+}
+
+.navbar-collapse {
+    @media screen and (max-width: 575px) {
+        margin-left: 20px;
+    }
+}
+
+
 
 

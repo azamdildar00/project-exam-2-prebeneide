@@ -1,10 +1,13 @@
 import React from 'react'
+import { Container } from 'react-bootstrap';
 import PageMessage from '../../components/common/PageMessage'
 
 function PlaceAddSuccess() {
   return (
     <>
-        <PageMessage message="Place added" />
+        <Container>
+          <PageMessage message="Place added" />
+        </Container>
     </>
   )
 }

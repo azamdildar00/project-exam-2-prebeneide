@@ -38,10 +38,12 @@
         justify-content: center;
         align-items: flex-start;
         align-items: center;
+        min-width: 150px;
     }
 
     &--product-image {
         max-width: 12vh;
+        min-width: 150px;
         padding: 10px;
 
         > img {

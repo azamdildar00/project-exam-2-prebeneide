@@ -48,8 +48,10 @@ function UserNav() {
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
-      <Container className="nav-container">
+      <Container className="nav-container d-flex">
         <Navbar.Brand href="/"><img className="nav-logo" alt="logo" src={logo}/></Navbar.Brand>
+
+        <Navbar.Toggle/>
 
         <div className="navbar__search--container">
           <input
@@ -75,7 +77,6 @@ function UserNav() {
           </div>
         </div>
 
-        <Navbar.Toggle/>
         <Navbar.Collapse>
           <Nav
             className="me-auto my-2 my-lg-0"

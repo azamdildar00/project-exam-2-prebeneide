@@ -7,6 +7,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/pro-solid-svg-icons';
+import LoadingSpinner from '../../components/common/LoadingSpinner';
+import BackLink from '../../components/common/BackLink';
 
 function EnquiryDetail() {
 
@@ -35,7 +37,9 @@ function EnquiryDetail() {
     },[]);
 
     if (loading) {
-        return <h1>Loading...</h1>;
+        return  <>
+                  <LoadingSpinner/>
+                </>
     }
 
     if (error) {
@@ -52,14 +56,16 @@ function EnquiryDetail() {
 
   return (
     <>
+        
         <Container className="mt-5 px-4">
+            <BackLink title="Back to enquiries" />
             <Row>
                 <h2 className="mb-2">Enquiry</h2>
                 <h4 className="mb-4">Customers booking request details</h4>
             </Row>
         </Container>
 
-        <Container className="px-5">
+        <Container className="px-5" style={{paddingBottom: 100}}>
             <Row className="enquiry-detail">
                 <Col xs={12} sm={12} md={6} >
                     <h5 className="my-5">Hotel / BnB / Guesthouse</h5>

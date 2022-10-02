@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { Container, Row, Table, Spinner} from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../constants/api';
+import LoadingSpinner from '../../components/common/LoadingSpinner';
 
 const url = BASE_URL + "/api/inboxes";
 
@@ -47,13 +48,9 @@ function Inbox() {
     }, []);
 
     if (loading) {
-        return (
-                <div className="loading-div">
-                    <Spinner animation="border" variant="infor" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </Spinner>
-                </div>
-        )
+        return  <>
+                  <LoadingSpinner/>
+                </>
     }
 
     if (error) {
@@ -69,7 +66,7 @@ function Inbox() {
                 <h5 className="mb-5">Inbox</h5>
             </Row>
 
-            <Table hover className="messages-inbox__table">
+            <Table hover responsive="xl" className="messages-inbox__table">
                 <thead className="messages-inbox__table--thead">
                     <tr>
                         <th>From</th>
@@ -82,9 +79,9 @@ function Inbox() {
                 <tbody className="messages-inbox__table--tbody">
                     {messages.map((message) => {
                         return <tr onClick={()=>redirect(message.id)} key={message.id}>
-                            <td>{message.attributes.name}</td>
-                            <td>{message.attributes.subject}</td>
-                            <td>{message.attributes.email}</td>
+                            <td className="wider-td">{message.attributes.name}</td>
+                            <td className="wider-td">{message.attributes.subject}</td>
+                            <td className="wider-td">{message.attributes.email}</td>
                             <td>{getFormattedDate(message.attributes.createdAt)}</td>
                             <td>{getFormattedTime(message.attributes.createdAt)}</td>
                         </tr>

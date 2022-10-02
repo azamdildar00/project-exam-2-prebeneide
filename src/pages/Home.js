@@ -6,9 +6,7 @@ import PlaceList from "./places/PlaceList";
 function Home() {
   return (
     <>
-      <Heading title="Home" />
-
-      <Container>
+      <Container className="mt-4">
         <PlaceList />
       </Container>
     </>

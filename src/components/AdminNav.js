@@ -25,12 +25,11 @@ function AdminNav() {
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
         <Navbar.Brand><img className="nav-logo" alt="logo" src={logo}/></Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
+        <Navbar.Toggle />
+        <Navbar.Collapse>
           <Nav
             className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
-            navbarScroll
+            style={{ maxHeight: "100px"}}
           >
 
             <LinkContainer to="/admin/place/add">
@@ -42,7 +41,9 @@ function AdminNav() {
             <LinkContainer to="/admin/inbox">
               <Nav.Link>Inbox</Nav.Link>
             </LinkContainer>
-            <button onClick={logout}>Log out</button>
+            <LinkContainer to="/">
+              <Nav.Link onClick={logout}>Log out</Nav.Link>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Container>

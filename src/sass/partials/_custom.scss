@@ -32,8 +32,16 @@ body {
 }
 
 .input__small--width {
-    width: 15%;
+    width: 70px !important;
     text-align: center;
+}
+
+.clock {
+    border-radius: 5px;
+}
+
+.green {
+    background-color: $colour-primary !important;
 }
 
 .form-control {
@@ -114,6 +122,25 @@ input {
         box-shadow: $box-shadow !important;
     }
 }
+
+.border-with-boxshadow {
+    border: 2px solid $colour-primary;
+    box-shadow: $box-shadow;
+}
+
+.border-radius {
+    border-radius: 10px;
+}
+
+.padding {
+    padding: 50px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+
 
 
 

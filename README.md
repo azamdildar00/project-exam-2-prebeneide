@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# HOLIDAZE (PROJECT EXAM 2)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This was our last exam. The goal here was to take the skills we have learned over the last years and take on an extensive project where the finished product should reflect my general development capabilities, in addition to visual and technical skills.
 
-## Available Scripts
+In this assignment we should make a hotel booking website for a company called Holidaze from Bergen.
 
-In the project directory, you can run:
+We should also deliver:
+- A Gantt chart planning the project
+- A style guide
+- An Adobe XD prototype
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- We should use a CSS Pre-processor and BEM if not using CSS Modules, Styled Components, Bootstrap etc ( I used Bootstrap)
+- We could choose between using React.js or Next.js ( I used React.js )
+- We should have a fully working website that fullfils the brief
+- We could use regular JS or TypeScript
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Description
 
-### `npm run build`
+### Brief (Our task)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A local tourism agency in Bergen is launching a new website called ‘Holidaze’ for visitors to the area to be able to find hotels, B&Bs and guesthouses, and for the accommodation owners to receive enquiries.
+The project requires you to create the visitor side of the website where users can search accommodation and make enquiries, as well as the administration side where properties can be added and enquiries managed.
+You will need to create an API to store the data for the establishments, enquiries and contact submissions. You can choose to use WordPress or Strapi as a Headless CMS, but it is very important that the API is deployed and publicly available.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Requirements for the Website
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Visitor Side
+- It should be a homepage
+- It should be a search bar typeahead (auto dropdown with hotel names that match what has been typed)
+- It should be a results page with all hotels
+- It should be a hotel specific page which displays all details about the hotel
+- It should be an enquiry page either modal or separate page
+- It should be a contact page (different to enquiry page) which goes to the admin for Holidaze
 
-### `npm run eject`
+#### Admin side
+- Here we should create a login section that makes use of JWT tokens
+- It should be a list of enquiries and new enquiries appear when user submits the form on the enquiry page
+- It should be a list of messages from contact form
+- The admin can create a new establishment
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Built With
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- [SASS](https://sass-lang.com/)
+- [JavaScript](https://www.javascript.com/)
+- [React](https://reactjs.org/)
+- [Bootstrap](https://getbootstrap.com)
 
-## Learn More
+## Getting Started
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Installing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone the repo:
 
-### Code Splitting
+```bash
+git clone git@github.com:Noroff-FEU-Assignments/project-exam-2-prebeneide.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Install the dependencies:
 
-### Analyzing the Bundle Size
+```
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Running
 
-### Making a Progressive Web App
+To run the app, run the following commands:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+npm run start
+```
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Contact
 
-### Deployment
+[My LinkedIn page](www.linkedin.com/in/prebeneide)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+## Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://www.codecheef.org/article/how-to-disable-previous-date-in-input-typedate-in-react-js
+
+https://www.youtube.com/watch?v=Q2aky3eeO40&list=LL&index=4
+
+https://fontawesome.com/v6/docs/web/use-with/react/add-icons#contentHeader
+
+https://fontawesome.com/vg/docs/web/setup/packages
+
+https://getcssscan.com/css-box-shadow-examples
+
+https://stackoverflow.com/questions/45379727/make-images-the-same-size-in-bootstrap-grid
+

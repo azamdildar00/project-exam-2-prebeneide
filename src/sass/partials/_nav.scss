@@ -46,6 +46,9 @@
     color: $colour-primary-black;
     height: auto;
     min-width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
     z-index: 5000;
     border-right: 1px solid $colour-primary;
     border-left: 1px solid $colour-primary;
